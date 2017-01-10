@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/* Components */
 import { HeaderComponent } from './components/header.component';
 import { NavigationComponent } from './components/navigation.component';
 
@@ -9,4 +10,4 @@ import { NavigationComponent } from './components/navigation.component';
   declarations: [ HeaderComponent, NavigationComponent ],
   exports: [ HeaderComponent, NavigationComponent ]
 })
-export class SharedModule { }
+export class SharedModule {}
