@@ -15,8 +15,11 @@ export class HomeComponent implements OnInit{
   constructor(private _homeService: HomeService) {}
 
   ngOnInit() {
-    this.weather = this._homeService.getWeather();
-    console.log(this.weather = this._homeService.getWeather());
+    this._homeService.getWeather()
+      .subscribe(
+        post => console.log(post),
+        error	=>	console.error(error)
+      );
   }
 
 }
