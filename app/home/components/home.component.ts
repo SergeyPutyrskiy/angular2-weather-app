@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../services/home.service';
 
+import 'rxjs/observable/interval';
+
+import { Observable } from "rxjs";
+
 @Component({
   selector: 'home-component',
   template: `
@@ -10,16 +14,20 @@ import { HomeService } from '../services/home.service';
 })
 
 export class HomeComponent implements OnInit{
-  weather: string[];
+  private weather: Object[] = [];
+
 
   constructor(private _homeService: HomeService) {}
 
   ngOnInit() {
     this._homeService.getWeather()
       .subscribe(
-        post => console.log(post),
+        post => {
+          this.weather.push(post);
+        },
         error	=>	console.error(error)
       );
+    console.log(this.weather);
   }
 
 }
