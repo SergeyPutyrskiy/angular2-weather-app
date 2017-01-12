@@ -61,6 +61,12 @@ table {
 }
 
 
+/* Headers */
+h2 {
+  font-size: 23px;
+}
+
+
 /* Header */
 .header {
   padding-right: 15px;
@@ -97,6 +103,12 @@ table {
   color: #353535;
   text-decoration: none;
   font-size: 17px;
+}
+
+
+/* Current weather block */
+.current-weather .city-title {
+  padding-top: 30px;
 }
 
 
