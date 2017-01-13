@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../services/home.service';
 
-import 'rxjs/observable/interval';
-
 import { Observable } from "rxjs";
 
 @Component({
@@ -11,7 +9,7 @@ import { Observable } from "rxjs";
               <header-component></header-component>
               <div class="current-weather" *ngFor=" let item of weather ">
                 <h2 class="city-title">Weather in {{ item.name }}:</h2>
-                <h4>{{ date }}</h4>
+                <h4>{{ today | date:'medium' }} </h4>
               </div>
             `,
   providers: [ HomeService ]
@@ -20,9 +18,11 @@ import { Observable } from "rxjs";
 export class HomeComponent implements OnInit{
   private weather: Object[] = [];
   private date = new Date().toLocaleTimeString();
+  today: number = Date.now();
+
 
   constructor(private _homeService: HomeService) {
-    setInterval(() => {return this.date;}, 1000);
+    // setInterval(() => {return this.today;}, 1000);
   }
 
   ngOnInit() {
