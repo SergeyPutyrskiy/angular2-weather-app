@@ -15,5 +15,5 @@ import { Component } from '@angular/core';
 })
 
 export class HeaderComponent {
-  logoUrl = '../../../images/logo.ico';
+  logoUrl = '../../../assets/images/logo.ico';
 }

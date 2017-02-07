@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../services/home.service';
 
-import { Observable } from "rxjs";
 
 @Component({
   selector: 'home-component',
@@ -9,7 +8,8 @@ import { Observable } from "rxjs";
               <header-component></header-component>
               <div class="current-weather" *ngFor=" let item of weather ">
                 <h2 class="city-title">Weather in {{ item.name }}:</h2>
-                <h4>{{ today | date:'medium' }} </h4>
+                <h3>{{ today | date:'medium' }} </h3>
+                <h4> {{item.main.temp}} °C</h4>
               </div>
             `,
   providers: [ HomeService ]
@@ -20,23 +20,17 @@ export class HomeComponent implements OnInit{
   private date = new Date().toLocaleTimeString();
   today: number = Date.now();
 
-
-  constructor(private _homeService: HomeService) {
-    // setInterval(() => {return this.today;}, 1000);
-  }
+  constructor(private _homeService: HomeService) {}
 
   ngOnInit() {
     this._homeService.getWeather()
       .subscribe(
-        post => {
-          this.weather.push(post);
+        weather => {
+          this.weather = [];
+          this.weather.push(weather);
         },
-        error	=>	console.error(error)
+        error	=> console.log(error)
       );
     console.log(this.weather);
   }
-
-
-  //setInterval(() => { this.auth.refreshToken(); }, 1000 * 60 * 10);
-
 }

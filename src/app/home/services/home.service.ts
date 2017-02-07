@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from "rxjs";
-import 'rxjs/add/operator/map';
+import { Observable } from "rxjs/Rx";
 
 @Injectable()
 export class HomeService {
@@ -15,9 +14,12 @@ export class HomeService {
 
   getWeather(): Observable<any> {
 
-    //return ["Weather Forecast in Kharkiv", "Weather Forecast in Kiev"];
-    //return this.http.get(this.url).interval(4000).timeInterval().map(res => res.json());
+    return Observable
+      //.interval(60*30*1000)
+      .interval(120*20)
+      .flatMap(() => {
+        return this.http.get(this.url).map(res => res.json());
+      });
 
-    return this.http.get(this.url).map(res => res.json());
   }
 }
