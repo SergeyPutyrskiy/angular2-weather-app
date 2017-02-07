@@ -10,15 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var home_service_1 = require('../services/home.service');
+var Rx_1 = require('rxjs/Rx');
 var HomeComponent = (function () {
     function HomeComponent(_homeService) {
         this._homeService = _homeService;
         this.weather = [];
-        this.date = new Date().toLocaleTimeString();
+        this.time = new Date().toLocaleTimeString();
         this.today = Date.now();
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var time = Rx_1.Observable.interval(1000).timeInterval().windowTime(0);
+        time.subscribe(function () {
+            _this.time = new Date().toLocaleTimeString();
+        });
         this._homeService.getWeather()
             .subscribe(function (weather) {
             _this.weather = [];
@@ -29,7 +34,7 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home-component',
-            template: "\n              <header-component></header-component>\n              <div class=\"current-weather\" *ngFor=\" let item of weather \">\n                <h2 class=\"city-title\">Weather in {{ item.name }}:</h2>\n                <h3>{{ today | date:'medium' }} </h3>\n                <h4> {{item.main.temp}} \u00B0C</h4>\n              </div>\n            ",
+            template: "\n              <header-component></header-component>\n              <div class=\"current-weather\" *ngFor=\" let item of weather \">\n                <h2 class=\"city-title\">Weather in {{ item.name }}:</h2>\n                <h3>{{ today | date }}, {{ time }}</h3>\n                <h4> {{item.main.temp}} \u00B0C</h4>\n              </div>\n            ",
             providers: [home_service_1.HomeService]
         }), 
         __metadata('design:paramtypes', [home_service_1.HomeService])

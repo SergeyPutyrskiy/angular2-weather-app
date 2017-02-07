@@ -13,7 +13,6 @@ export class HomeService {
   constructor(private http: Http) {}
 
   getWeather(): Observable<any> {
-
     return Observable
       //.interval(60*30*1000)
       .interval(120*20)
