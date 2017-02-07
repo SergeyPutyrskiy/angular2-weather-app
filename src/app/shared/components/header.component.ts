@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
   selector: 'header-component',
   template: `
               <header class="header">
-                <div class="float-left">
+                <div class="floatLeft">
                   <div class="logo"><img [src]="logoUrl" alt="logo"></div>
                 </div>
-                <div class="float-right">
+                <div class="floatRight">
                   <navigation-component></navigation-component>
                 </div>
               </header>

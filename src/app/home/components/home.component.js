@@ -20,7 +20,7 @@ var HomeComponent = (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var time = Rx_1.Observable.interval(1000).timeInterval().windowTime(0);
+        var time = Rx_1.Observable.interval(1111000).timeInterval().windowTime(0);
         time.subscribe(function () {
             _this.time = new Date().toLocaleTimeString();
         });
@@ -34,7 +34,7 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home-component',
-            template: "\n              <header-component></header-component>\n              <div class=\"current-weather\" *ngFor=\" let item of weather \">\n                <h2 class=\"city-title\">Weather in {{ item.name }}:</h2>\n                <h3>{{ today | date }}, {{ time }}</h3>\n                <h4> {{item.main.temp}} \u00B0C</h4>\n              </div>\n            ",
+            template: "\n              <header-component></header-component>\n              <div class=\"currentWeather\" *ngFor=\" let item of weather \">\n                <h2 class=\"cityTitle\">Weather in {{ item.name }}</h2>\n                <h3 class=\"dateTime\">{{ today | date }}, {{ time }}</h3>\n                <p class=\"temperature\"> {{item.main.temp}} \u00B0C</p>\n              </div>\n            ",
             providers: [home_service_1.HomeService]
         }), 
         __metadata('design:paramtypes', [home_service_1.HomeService])

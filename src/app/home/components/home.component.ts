@@ -7,10 +7,10 @@ import {Observable} from 'rxjs/Rx';
   selector: 'home-component',
   template: `
               <header-component></header-component>
-              <div class="current-weather" *ngFor=" let item of weather ">
-                <h2 class="city-title">Weather in {{ item.name }}:</h2>
-                <h3>{{ today | date }}, {{ time }}</h3>
-                <h4> {{item.main.temp}} °C</h4>
+              <div class="currentWeather" *ngFor=" let item of weather ">
+                <h2 class="cityTitle">Weather in {{ item.name }}</h2>
+                <h3 class="dateTime">{{ today | date }}, {{ time }}</h3>
+                <p class="temperature"> {{item.main.temp}} °C</p>
               </div>
             `,
   providers: [ HomeService ]
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit{
 
   ngOnInit() {
 
-    let time = Observable.interval(1000).timeInterval().windowTime(0);
+    let time = Observable.interval(1111000).timeInterval().windowTime(0);
 
     time.subscribe(
       () => {
