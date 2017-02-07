@@ -16,7 +16,7 @@ var HeaderComponent = (function () {
     HeaderComponent = __decorate([
         core_1.Component({
             selector: 'header-component',
-            template: "\n              <header class=\"header\">\n                <div class=\"floatLeft\">\n                  <div class=\"logo\"><img [src]=\"logoUrl\" alt=\"logo\"></div>\n                </div>\n                <div class=\"floatRight\">\n                  <navigation-component></navigation-component>\n                </div>\n              </header>\n            "
+            template: "\n              <header class=\"header\">\n                <div class=\"floatLeft\">\n                  <div class=\"logo\"><img [src]=\"logoUrl\" alt=\"logo\"></div>\n                </div>\n                <div class=\"floatRight\">\n                  <navigation-component></navigation-component>\n                </div>\n              </header>\n              \n            "
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);

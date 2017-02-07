@@ -15,7 +15,7 @@ var NavigationComponent = (function () {
     NavigationComponent = __decorate([
         core_1.Component({
             selector: 'navigation-component',
-            template: "\n              <nav class=\"navigation\">\n                <a href=\"#\">Home</a>\n                <a href=\"#\">Detail forecast</a>\n                <a href=\"#\">Forecast in capitals</a>\n              </nav>\n            "
+            template: "\n              <nav class=\"navigation\">\n                <a routerLink=\"\">Home</a>\n                <a href=\"#\">Detail forecast</a>\n                <a routerLink=\"capital-cities\">Forecast in capitals</a>\n              </nav>\n            "
         }), 
         __metadata('design:paramtypes', [])
     ], NavigationComponent);

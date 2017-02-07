@@ -6,7 +6,6 @@ import {Observable} from 'rxjs/Rx';
 @Component({
   selector: 'home-component',
   template: `
-              <header-component></header-component>
               <div class="currentWeather" *ngFor=" let item of weather ">
                 <h2 class="cityTitle">Weather in {{ item.name }}</h2>
                 <h3 class="dateTime">{{ today | date }}, {{ time }}</h3>
