@@ -8,27 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/* Modules */
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var http_1 = require('@angular/http');
-var home_module_1 = require("./home/home.module");
-var shared_module_1 = require("./shared/shared.module");
-var capitalCities_module_1 = require("./capitalCities/capitalCities.module");
+var common_1 = require('@angular/common');
+/* Modules */
+var shared_module_1 = require('../shared/shared.module');
 /* Components */
-var app_component_1 = require('./app.component');
-var AppModule = (function () {
-    function AppModule() {
+var capitalCities_component_1 = require('./components/capitalCities.component');
+var CapitalCitiesModule = (function () {
+    function CapitalCitiesModule() {
     }
-    AppModule = __decorate([
+    CapitalCitiesModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, home_module_1.HomeModule, shared_module_1.SharedModule, capitalCities_module_1.CapitalCitiesModule],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+            imports: [common_1.CommonModule, shared_module_1.SharedModule],
+            declarations: [capitalCities_component_1.CapitalCitiesComponent],
+            exports: [capitalCities_component_1.CapitalCitiesComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], CapitalCitiesModule);
+    return CapitalCitiesModule;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.CapitalCitiesModule = CapitalCitiesModule;
+//# sourceMappingURL=capitalCities.module.js.map
