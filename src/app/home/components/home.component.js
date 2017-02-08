@@ -20,21 +20,25 @@ var HomeComponent = (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var time = Rx_1.Observable.interval(1111000).timeInterval().windowTime(0);
-        time.subscribe(function () {
+        var time = Rx_1.Observable.interval().windowTime(1000);
+        this.subscriptionTime = time.subscribe(function () {
             _this.time = new Date().toLocaleTimeString();
         });
-        this._homeService.getWeather()
+        this.subscriptionDataWeather = this._homeService.getWeather()
+            .retry(5)
             .subscribe(function (weather) {
             _this.weather = [];
             _this.weather.push(weather);
         }, function (error) { return console.log(error); });
-        console.log(this.weather);
+    };
+    HomeComponent.prototype.ngOnDestroy = function () {
+        this.subscriptionTime.unsubscribe();
+        this.subscriptionDataWeather.unsubscribe();
     };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home-component',
-            template: "\n              <div class=\"currentWeather mainContent\" *ngFor=\" let item of weather \">\n                <h2 class=\"cityTitle\">Weather in {{ item.name }}</h2>\n                <h3 class=\"dateTime\">{{ today | date }}, {{ time }}</h3>\n                <p class=\"temperature\"> {{item.main.temp}} \u00B0C</p>\n              </div>\n            ",
+            template: "\n              <h3 class=\"dateTime\">{{ today | date }}, {{ time }}</h3>\n              <div class=\"currentWeather mainContent\" *ngFor=\" let object of weather\">\n                <div class=\"city\" *ngFor=\" let listCities of object.list \">\n                  <h2 class=\"cityTitle\">Weather in {{ listCities.name }}</h2>\n                  <p class=\"temperature\"> {{listCities.main.temp | number:'1.1-1'}} \u00B0C</p>\n                  <ul class=\"details\">\n                    <li><p>Humidity</p> {{listCities.main.humidity}}</li>\n                    <li><p>Pressure</p> {{listCities.main.pressure}}</li>\n                    <li><p>Max</p> {{listCities.main.temp_max}}</li>\n                    <li><p>Min</p> {{listCities.main.temp_min}}</li>\n                    <li><p>Wind</p> {{listCities.wind.speed}}</li>\n                  </ul>\n                </div>\n              </div>\n              <router-outlet></router-outlet>\n            ",
             providers: [home_service_1.HomeService]
         }), 
         __metadata('design:paramtypes', [home_service_1.HomeService])

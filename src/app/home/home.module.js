@@ -14,14 +14,17 @@ var common_1 = require('@angular/common');
 var shared_module_1 = require("../shared/shared.module");
 /* Components */
 var home_component_1 = require('./components/home.component');
+var weatherDetails_component_1 = require('./components/weatherDetails.component');
+/* Routing */
+var home_routing_1 = require('./routing/home.routing');
 var HomeModule = (function () {
     function HomeModule() {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, shared_module_1.SharedModule],
-            declarations: [home_component_1.HomeComponent],
-            exports: [home_component_1.HomeComponent]
+            imports: [common_1.CommonModule, shared_module_1.SharedModule, home_routing_1.routing],
+            declarations: [home_component_1.HomeComponent, weatherDetails_component_1.WeatherDetailsComponent],
+            exports: [home_component_1.HomeComponent, weatherDetails_component_1.WeatherDetailsComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], HomeModule);

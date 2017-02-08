@@ -99,6 +99,18 @@ h2 {
 }
 
 
+/* Date time */
+.dateTime {
+  padding-top: 30px;
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-block;
+  float: right;
+  color: #0526b3;
+}
+
+
 /* Navigation */
 .navigation {
   margin: 40px 0;
@@ -112,18 +124,55 @@ h2 {
 }
 
 
+/* Home component */
 /* Current weather block */
 .currentWeather {
   line-height: 25px;
 }
 
-.currentWeather .dateTime {
-  font-size: 17px;
+.currentWeather .city {
+  margin-top: 40px;
+}
+
+.currentWeather .cityTitle {
+  font-size: 25px;
+  color: #214acb;
+  font-weight: 600;
 }
 
 .currentWeather .temperature {
   font-weight: 500;
-  font-size: 24px;
+  font-size: 45px;
+  padding-top: 20px;
+}
+
+.currentWeather .details {
+  margin-top: 20px;
+  background-color: #f0f6ff;
+  display: inline-block;
+  padding: 15px;
+}
+
+.currentWeather .details li {
+  display: inline-block;
+  text-align: center;
+  padding-right: 30px;
+  font-size: 17px;
+}
+
+.currentWeather .details li:last-child {
+  padding-right: 0;
+}
+
+.currentWeather .details li p {
+  font-weight: 600;
+}
+
+
+/* Capital cities component */
+.capitalCitiesComponent h1 {
+  font-size: 30px;
+  text-align: center;
 }
 
 

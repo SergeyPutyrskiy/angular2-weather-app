@@ -9,17 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var CapitalCitiesComponent = (function () {
-    function CapitalCitiesComponent() {
+var weatherDetails_service_1 = require('../services/weatherDetails.service');
+var WeatherDetailsComponent = (function () {
+    function WeatherDetailsComponent(_weatherDetailsService) {
+        this._weatherDetailsService = _weatherDetailsService;
     }
-    CapitalCitiesComponent = __decorate([
+    WeatherDetailsComponent = __decorate([
         core_1.Component({
-            selector: 'capitalCities-component',
-            template: "\n              <div class=\"capitalCitiesComponent mainContent\">\n                <h1>Capital cities component under development</h1>\n              </div> \n            "
+            selector: 'weather-details-component',
+            template: "\n              <div class=\"mainContent\">\n                Weather Details Component\n              </div>\n            ",
+            providers: [weatherDetails_service_1.WeatherDetailsService]
         }), 
-        __metadata('design:paramtypes', [])
-    ], CapitalCitiesComponent);
-    return CapitalCitiesComponent;
+        __metadata('design:paramtypes', [weatherDetails_service_1.WeatherDetailsService])
+    ], WeatherDetailsComponent);
+    return WeatherDetailsComponent;
 }());
-exports.CapitalCitiesComponent = CapitalCitiesComponent;
-//# sourceMappingURL=capitalCities.component.js.map
+exports.WeatherDetailsComponent = WeatherDetailsComponent;
+//# sourceMappingURL=weatherDetails.component.js.map

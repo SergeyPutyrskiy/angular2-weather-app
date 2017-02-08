@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Rx_1 = require("rxjs/Rx");
-var HomeService = (function () {
-    function HomeService(http) {
+var WeatherDetailsService = (function () {
+    function WeatherDetailsService(http) {
         this.http = http;
-        this.url = 'http://api.openweathermap.org/data/2.5/group?id=706483,703448,709717,709930,702550&units=metric&APPID=fccb137619df444c88e89f1b68ad6c19';
+        //private _url = 'https://jsonplaceholder.typicode.com/posts';
+        //private _url = 'http://api.openweathermap.org/data/2.5/weather?id=2172797&APPID=fccb137619df444c88e89f1b68ad6c19';
+        //private _url = 'http://api.openweathermap.org/data/2.5/weather?q=Kharkiv&APPID=fccb137619df444c88e89f1b68ad6c19';
+        this.url = 'http://api.openweathermap.org/data/2.5/weather?id=706483&units=metric&APPID=fccb137619df444c88e89f1b68ad6c19';
     }
-    HomeService.prototype.getWeather = function () {
+    WeatherDetailsService.prototype.getWeather = function () {
         var _this = this;
         return Rx_1.Observable
             .interval(100 * 20)
@@ -24,11 +27,11 @@ var HomeService = (function () {
             return _this.http.get(_this.url).map(function (res) { return res.json(); });
         });
     };
-    HomeService = __decorate([
+    WeatherDetailsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], HomeService);
-    return HomeService;
+    ], WeatherDetailsService);
+    return WeatherDetailsService;
 }());
-exports.HomeService = HomeService;
-//# sourceMappingURL=home.service.js.map
+exports.WeatherDetailsService = WeatherDetailsService;
+//# sourceMappingURL=weatherDetails.service.js.map
