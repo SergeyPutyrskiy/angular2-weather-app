@@ -59,6 +59,11 @@ table {
 .floatRight {
   float: right;
 }
+.mainContent {
+  padding: 30px 15px 0;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 
 /* Headers */
@@ -100,23 +105,16 @@ h2 {
 }
 .navigation a {
   padding: 0 10px;
-  color: #353535;
+  color: #414f8c;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 
 /* Current weather block */
 .currentWeather {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
   line-height: 25px;
-}
-
-.currentWeather .cityTitle {
-  padding-top: 30px;
 }
 
 .currentWeather .dateTime {

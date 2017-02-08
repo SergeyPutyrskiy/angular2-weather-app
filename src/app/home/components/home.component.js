@@ -34,7 +34,7 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home-component',
-            template: "\n              <div class=\"currentWeather\" *ngFor=\" let item of weather \">\n                <h2 class=\"cityTitle\">Weather in {{ item.name }}</h2>\n                <h3 class=\"dateTime\">{{ today | date }}, {{ time }}</h3>\n                <p class=\"temperature\"> {{item.main.temp}} \u00B0C</p>\n              </div>\n            ",
+            template: "\n              <div class=\"currentWeather mainContent\" *ngFor=\" let item of weather \">\n                <h2 class=\"cityTitle\">Weather in {{ item.name }}</h2>\n                <h3 class=\"dateTime\">{{ today | date }}, {{ time }}</h3>\n                <p class=\"temperature\"> {{item.main.temp}} \u00B0C</p>\n              </div>\n            ",
             providers: [home_service_1.HomeService]
         }), 
         __metadata('design:paramtypes', [home_service_1.HomeService])

@@ -15,7 +15,7 @@ var CapitalCitiesComponent = (function () {
     CapitalCitiesComponent = __decorate([
         core_1.Component({
             selector: 'capitalCities-component',
-            template: "\n              <div>Capital cities component</div> \n            "
+            template: "\n              <div class=\"mainContent\">Capital cities component</div> \n            "
         }), 
         __metadata('design:paramtypes', [])
     ], CapitalCitiesComponent);

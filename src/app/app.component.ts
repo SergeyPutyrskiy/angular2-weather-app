@@ -10,7 +10,6 @@ import { Component } from '@angular/core';
                 <div class="floatRight">
                   <nav class="navigation">
                     <a routerLink="">Home</a>
-                    <a href="#">Detail forecast</a>
                     <a routerLink="capital-cities">Forecast in capitals</a>
                   </nav>
                 </div>
