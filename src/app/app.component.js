@@ -11,11 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
+        this.logoUrl = '../../../assets/images/logo.ico';
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<div class=\"wrapper\">\n              <header-component></header-component>\n              <router-outlet></router-outlet>\n             </div>"
+            template: "<div class=\"wrapper\">\n               <header class=\"header\">\n                <div class=\"floatLeft\">\n                  <div class=\"logo\"><img [src]=\"logoUrl\" alt=\"logo\"></div>\n                </div>\n                <div class=\"floatRight\">\n                  <nav class=\"navigation\">\n                    <a routerLink=\"\">Home</a>\n                    <a href=\"#\">Detail forecast</a>\n                    <a routerLink=\"capital-cities\">Forecast in capitals</a>\n                  </nav>\n                </div>\n              </header>\n              <router-outlet></router-outlet>\n             </div>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

@@ -8,4 +8,4 @@ var routes = [
     { path: 'capital-cities', component: capitalCities_component_1.CapitalCitiesComponent }
 ];
 exports.routing = router_1.RouterModule.forRoot(routes);
-//# sourceMappingURL=app.routing.jts.map
+//# sourceMappingURL=app.routing.js.map
