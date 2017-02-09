@@ -17,6 +17,7 @@ var HomeComponent = (function () {
         this.weather = [];
         this.time = new Date().toLocaleTimeString();
         this.today = Date.now();
+        this.loader = false;
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -24,12 +25,17 @@ var HomeComponent = (function () {
         this.subscriptionTime = time.subscribe(function () {
             _this.time = new Date().toLocaleTimeString();
         });
+        this.loader = true;
         this.subscriptionDataWeather = this._homeService.getWeather()
             .retry(5)
             .subscribe(function (weather) {
             _this.weather = [];
             _this.weather.push(weather);
-        }, function (error) { return console.log(error); });
+            _this.loader = false;
+        }, function (error) {
+            console.log(error);
+            _this.loader = false;
+        });
     };
     HomeComponent.prototype.ngOnDestroy = function () {
         this.subscriptionTime.unsubscribe();
@@ -38,7 +44,7 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home-component',
-            template: "\n              <h3 class=\"dateTime\">{{ today | date }}, {{ time }}</h3>\n              <div class=\"currentWeather mainContent\" *ngFor=\" let object of weather\">\n                <div class=\"city\" *ngFor=\" let listCities of object.list \">\n                  <h2 class=\"cityTitle\">Weather in {{ listCities.name }}</h2>\n                  <p class=\"temperature\"> {{listCities.main.temp | number:'1.1-1'}} \u00B0C</p>\n                  <ul class=\"details\">\n                    <li><p>Humidity</p> {{listCities.main.humidity}}</li>\n                    <li><p>Pressure</p> {{listCities.main.pressure}}</li>\n                    <li><p>Max</p> {{listCities.main.temp_max}}</li>\n                    <li><p>Min</p> {{listCities.main.temp_min}}</li>\n                    <li><p>Wind</p> {{listCities.wind.speed}}</li>\n                  </ul>\n                </div>\n              </div>\n              <router-outlet></router-outlet>\n            ",
+            template: "\n              <div *ngIf=\"loader == true\" class=\"loader\">\n                <i class=\"fa fa-spinner fa-pulse fa-3x\" aria-hidden=\"true\"></i>\n              </div>\n              <div class=\"dateTime\">\n                <p class=\"time\">{{ time }}</p>\n                <p class=\"date\">{{ today | date }}</p>\n              </div>\n              <div class=\"currentWeather mainContent\" *ngFor=\" let object of weather\">\n                <div class=\"city\" *ngFor=\" let listCities of object.list \">\n                  <h2 class=\"cityTitle\">Weather in {{ listCities.name }}</h2>\n                  <p class=\"temperature\"> {{listCities.main.temp | number:'1.1-1'}} \u00B0C</p>\n                  <ul class=\"details\">\n                    <li><p>Humidity</p> {{listCities.main.humidity}}</li>\n                    <li><p>Pressure</p> {{listCities.main.pressure}}</li>\n                    <li><p>Max</p> {{listCities.main.temp_max}}</li>\n                    <li><p>Min</p> {{listCities.main.temp_min}}</li>\n                    <li><p>Wind</p> {{listCities.wind.speed}}</li>\n                  </ul>\n                </div>\n              </div>\n              <router-outlet></router-outlet>\n            ",
             providers: [home_service_1.HomeService]
         }), 
         __metadata('design:paramtypes', [home_service_1.HomeService])

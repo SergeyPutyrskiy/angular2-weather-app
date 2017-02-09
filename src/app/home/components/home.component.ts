@@ -6,7 +6,13 @@ import { Observable } from 'rxjs/Rx';
 @Component({
   selector: 'home-component',
   template: `
-              <h3 class="dateTime">{{ today | date }}, {{ time }}</h3>
+              <div *ngIf="loader == true" class="loader">
+                <i class="fa fa-spinner fa-pulse fa-3x" aria-hidden="true"></i>
+              </div>
+              <div class="dateTime">
+                <p class="time">{{ time }}</p>
+                <p class="date">{{ today | date }}</p>
+              </div>
               <div class="currentWeather mainContent" *ngFor=" let object of weather">
                 <div class="city" *ngFor=" let listCities of object.list ">
                   <h2 class="cityTitle">Weather in {{ listCities.name }}</h2>
@@ -25,17 +31,17 @@ import { Observable } from 'rxjs/Rx';
   providers: [ HomeService ]
 })
 
-export class HomeComponent implements OnInit, OnDestroy{
+export class HomeComponent implements OnInit, OnDestroy {
   private weather: Object[] = [];
-  private time = new Date().toLocaleTimeString();
+  time = new Date().toLocaleTimeString();
   today: number = Date.now();
   subscriptionTime: any;
   subscriptionDataWeather: any;
+  loader: boolean = false;
 
   constructor(private _homeService: HomeService) {}
 
   ngOnInit() {
-
     let time = Observable.interval().windowTime(1000);
 
     this.subscriptionTime = time.subscribe(
@@ -44,14 +50,20 @@ export class HomeComponent implements OnInit, OnDestroy{
       }
     );
 
+    this.loader = true;
+
     this.subscriptionDataWeather = this._homeService.getWeather()
       .retry(5)
       .subscribe(
         weather => {
           this.weather = [];
           this.weather.push(weather);
+          this.loader = false;
         },
-        error	=> console.log(error)
+        error	=> {
+          console.log(error);
+          this.loader = false;
+        }
       );
   }
 
@@ -59,5 +71,4 @@ export class HomeComponent implements OnInit, OnDestroy{
     this.subscriptionTime.unsubscribe();
     this.subscriptionDataWeather.unsubscribe();
   }
-
 }
