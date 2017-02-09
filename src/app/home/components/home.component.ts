@@ -23,6 +23,7 @@ import { Observable } from 'rxjs/Rx';
                     <li><p>Max</p> {{listCities.main.temp_max}}</li>
                     <li><p>Min</p> {{listCities.main.temp_min}}</li>
                     <li><p>Wind</p> {{listCities.wind.speed}}</li>
+                    <a class="weatherOnFiveDays" href="#">Get weather on 5 days</a>
                   </ul>
                 </div>
               </div>
