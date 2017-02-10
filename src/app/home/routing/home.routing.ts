@@ -9,4 +9,4 @@ const routes : Routes = [
   { path: 'weather-details', component: WeatherDetailsComponent }
 ];
 
-export const routing = RouterModule.forRoot(routes);
+export const homeRouting = RouterModule.forChild(routes);

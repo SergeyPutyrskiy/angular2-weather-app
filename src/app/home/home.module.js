@@ -22,7 +22,7 @@ var HomeModule = (function () {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, shared_module_1.SharedModule, home_routing_1.routing],
+            imports: [common_1.CommonModule, shared_module_1.SharedModule, home_routing_1.homeRouting],
             declarations: [home_component_1.HomeComponent, weatherDetails_component_1.WeatherDetailsComponent],
             exports: [home_component_1.HomeComponent, weatherDetails_component_1.WeatherDetailsComponent]
         }), 

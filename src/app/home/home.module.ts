@@ -9,11 +9,11 @@ import { HomeComponent } from './components/home.component';
 import { WeatherDetailsComponent } from './components/weatherDetails.component';
 
 /* Routing */
-import { routing } from './routing/home.routing';
+import { homeRouting } from './routing/home.routing';
 
 @NgModule({
-  imports:      [ CommonModule, SharedModule, routing ],
+  imports:      [ CommonModule, SharedModule, homeRouting ],
   declarations: [ HomeComponent, WeatherDetailsComponent ],
-  exports: [ HomeComponent,WeatherDetailsComponent ]
+  exports: [ HomeComponent, WeatherDetailsComponent ]
 })
 export class HomeModule {}

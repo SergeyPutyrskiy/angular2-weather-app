@@ -12,8 +12,8 @@ var core_1 = require('@angular/core');
 var weatherDetails_service_1 = require('../services/weatherDetails.service');
 var router_1 = require('@angular/router');
 var WeatherDetailsComponent = (function () {
-    function WeatherDetailsComponent(_weatherDetailsService, route) {
-        this._weatherDetailsService = _weatherDetailsService;
+    function WeatherDetailsComponent(weatherDetailsService, route) {
+        this.weatherDetailsService = weatherDetailsService;
         this.route = route;
     }
     WeatherDetailsComponent.prototype.ngOnInit = function () {

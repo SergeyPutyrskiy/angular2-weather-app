@@ -17,7 +17,7 @@ export class WeatherDetailsComponent implements OnInit {
   id: number;
   subscription: any;
 
-  constructor(private _weatherDetailsService: WeatherDetailsService, private route: ActivatedRoute) {}
+  constructor(private weatherDetailsService: WeatherDetailsService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(params => {
