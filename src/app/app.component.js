@@ -16,7 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<div class=\"wrapper\">\n               <header class=\"header\">\n                <div class=\"floatLeft\">\n                  <div class=\"logo\"><img [src]=\"logoUrl\" alt=\"logo\"></div>\n                </div>\n                <div class=\"floatRight\">\n                  <nav class=\"navigation\">\n                    <a routerLink=\"\">Home</a>\n                    <a routerLink=\"capital-cities\">Forecast in capitals</a>\n                  </nav>\n                </div>\n              </header>\n              <router-outlet></router-outlet>\n             </div>"
+            template: "<div class=\"wrapper\">\n               <header class=\"header\">\n                <div class=\"floatLeft\">\n                  <div class=\"logo\"><img [src]=\"logoUrl\" alt=\"logo\"></div>\n                </div>\n                <div class=\"floatRight\">\n                  <nav class=\"navigation\">\n                    <a routerLink=\"\">Home</a>\n                    <a routerLink=\"weather-forecast\">Weather Forecast</a>\n                  </nav>\n                </div>\n              </header>\n              <router-outlet></router-outlet>\n             </div>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

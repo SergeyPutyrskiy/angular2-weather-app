@@ -9,17 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var CapitalCitiesComponent = (function () {
-    function CapitalCitiesComponent() {
+var common_1 = require('@angular/common');
+/* Modules */
+var shared_module_1 = require('../shared/shared.module');
+/* Components */
+var weatherForecast_component_1 = require('./components/weatherForecast.component');
+var WeatherForecastModule = (function () {
+    function WeatherForecastModule() {
     }
-    CapitalCitiesComponent = __decorate([
-        core_1.Component({
-            selector: 'capitalCities-component',
-            template: "\n              <div class=\"capitalCitiesComponent mainContent\">\n                <h1>Capital cities component under development</h1>\n              </div> \n            "
+    WeatherForecastModule = __decorate([
+        core_1.NgModule({
+            imports: [common_1.CommonModule, shared_module_1.SharedModule],
+            declarations: [weatherForecast_component_1.WeatherForecastComponent],
+            exports: [weatherForecast_component_1.WeatherForecastComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], CapitalCitiesComponent);
-    return CapitalCitiesComponent;
+    ], WeatherForecastModule);
+    return WeatherForecastModule;
 }());
-exports.CapitalCitiesComponent = CapitalCitiesComponent;
-//# sourceMappingURL=capitalCities.component.js.map
+exports.WeatherForecastModule = WeatherForecastModule;
+//# sourceMappingURL=weatherForecast.module.js.map

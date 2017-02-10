@@ -15,15 +15,19 @@ import { Observable } from 'rxjs/Rx';
               </div>
               <div class="currentWeather mainContent" *ngFor=" let object of weather">
                 <div class="city" *ngFor=" let listCities of object.list ">
-                  <h2 class="cityTitle">Weather in {{ listCities.name }}</h2>
-                  <p class="temperature"> {{listCities.main.temp | number:'1.1-1'}} °C</p>
-                  <ul class="details">
-                    <li><p>Humidity</p> {{listCities.main.humidity}}</li>
-                    <li><p>Pressure</p> {{listCities.main.pressure}}</li>
-                    <li><p>Max</p> {{listCities.main.temp_max}}</li>
-                    <li><p>Min</p> {{listCities.main.temp_min}}</li>
-                    <li><p>Wind</p> {{listCities.wind.speed}}</li>
-                    <a class="weatherOnFiveDays" href="#">Get weather on 5 days</a>
+                  <ul class="cityWeather">
+                    <li class="itemCityTitle"><h2 class="cityTitle">Weather in {{ listCities.name }}</h2></li>
+                    <li class="itemTemperature"><p class="temperature"> {{listCities.main.temp | number:'1.1-1'}} °C</p></li>
+                    <li class="details">
+                      <ul>
+                        <li><p>Humidity</p> {{listCities.main.humidity}}</li>
+                        <li><p>Pressure</p> {{listCities.main.pressure}}</li>
+                        <li><p>Max</p> {{listCities.main.temp_max}}</li>
+                        <li><p>Min</p> {{listCities.main.temp_min}}</li>
+                        <li><p>Wind</p> {{listCities.wind.speed}}</li>
+                      </ul>
+                    </li>
+                    <li><a class="weatherOnFiveDays" [routerLink]="['weather-details-component', 1]">Get weather on 5 days</a></li>
                   </ul>
                 </div>
               </div>

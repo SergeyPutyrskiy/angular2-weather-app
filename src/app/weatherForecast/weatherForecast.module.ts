@@ -5,13 +5,13 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 
 /* Components */
-import { CapitalCitiesComponent } from './components/capitalCities.component';
+import { WeatherForecastComponent } from './components/weatherForecast.component';
 
 @NgModule({
   imports: [ CommonModule, SharedModule ],
-  declarations: [ CapitalCitiesComponent ],
-  exports: [ CapitalCitiesComponent ]
+  declarations: [ WeatherForecastComponent ],
+  exports: [ WeatherForecastComponent ]
 })
 
-export class CapitalCitiesModule {}
+export class WeatherForecastModule {}
 

@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
                 <div class="floatRight">
                   <nav class="navigation">
                     <a routerLink="">Home</a>
-                    <a routerLink="capital-cities">Forecast in capitals</a>
+                    <a routerLink="weather-forecast">Weather Forecast</a>
                   </nav>
                 </div>
               </header>

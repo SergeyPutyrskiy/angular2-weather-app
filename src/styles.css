@@ -11,7 +11,7 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
+article, aside, canvas, cityWeather, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
@@ -23,7 +23,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
+article, aside, cityWeather, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -161,52 +161,68 @@ h2 {
 .currentWeather .city:first-child {
   margin-top: 0;
 }
-.currentWeather .cityTitle {
-  font-size: 25px;
-  color: #214acb;
-  font-weight: 600;
-}
-.currentWeather .temperature {
-  font-weight: 500;
-  font-size: 45px;
-  padding-top: 20px;
-}
-.currentWeather .details {
+.currentWeather .cityWeather {
   position: relative;
   margin-top: 20px;
   padding: 15px;
   background-color: #f0f6ff;
+  box-shadow: 0 0 8px #888888;
   display: inline-block;
   border-radius: 3px;
 }
-.currentWeather .details li {
+.currentWeather .cityWeather li {
   display: inline-block;
-  text-align: center;
   padding-right: 30px;
   font-size: 17px;
+  text-align: center;
 }
-.currentWeather .details li:last-child {
+.currentWeather .cityWeather .itemCityTitle,
+.currentWeather .cityWeather .itemTemperature {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: left;
+}
+.currentWeather .cityWeather .itemTemperature {
+  display: block;
+  padding: 20px 0;
+}
+.currentWeather .cityWeather .cityTitle {
+  font-size: 25px;
+  color: #214acb;
+  font-weight: 600;
+}
+.currentWeather .cityWeather .temperature {
+  font-weight: 500;
+  font-size: 45px;
+}
+.currentWeather .cityWeather .details {
+  padding: 5px 10px;
+  background-color: #dfecff;
+  box-shadow: 0 0 3px #888888;
+}
+.currentWeather .cityWeather li:last-child {
   padding-right: 0;
 }
-.currentWeather .details li p {
+.currentWeather .cityWeather li p {
   font-weight: 600;
 }
 .currentWeather .weatherOnFiveDays {
   position: absolute;
   right: 0;
   bottom: -45px;
-  padding: 5px 10px;
+  padding: 6px 10px;
   background-color: #3b9cff;
   text-decoration: none;
   color: #f9f9f9;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   border-radius: 3px;
+  border: none;
 }
 
 
 /* Capital cities component */
-.capitalCitiesComponent h1 {
+.weatherForecastComponent h1 {
   font-size: 30px;
   text-align: center;
 }

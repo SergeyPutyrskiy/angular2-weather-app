@@ -15,7 +15,7 @@ var http_1 = require('@angular/http');
 /* Custom modules */
 var home_module_1 = require("./home/home.module");
 var shared_module_1 = require("./shared/shared.module");
-var capitalCities_module_1 = require("./capitalCities/capitalCities.module");
+var weatherForecast_module_1 = require("./weatherForecast/weatherForecast.module");
 /* Components */
 var app_component_1 = require('./app.component');
 /* Routing */
@@ -25,7 +25,7 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, home_module_1.HomeModule, shared_module_1.SharedModule, capitalCities_module_1.CapitalCitiesModule, app_routing_1.routing],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, home_module_1.HomeModule, shared_module_1.SharedModule, weatherForecast_module_1.WeatherForecastModule, app_routing_1.routing],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 

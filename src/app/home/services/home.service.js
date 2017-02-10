@@ -19,7 +19,7 @@ var HomeService = (function () {
     HomeService.prototype.getWeather = function () {
         var _this = this;
         return Rx_1.Observable
-            .interval(100 * 20)
+            .interval(400 * 10)
             .flatMap(function () {
             return _this.http.get(_this.url).map(function (res) { return res.json(); });
         });

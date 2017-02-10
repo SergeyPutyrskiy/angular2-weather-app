@@ -11,7 +11,7 @@ export class HomeService {
   getWeather(): Observable<any> {
     return Observable
       //.interval(60*30*1000)
-      .interval(100*20)
+      .interval(400*10)
       .flatMap(() => {
         return this.http.get(this.url).map(res => res.json());
       });

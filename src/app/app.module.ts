@@ -6,7 +6,7 @@ import { HttpModule }    from '@angular/http';
 /* Custom modules */
 import { HomeModule } from "./home/home.module";
 import { SharedModule } from "./shared/shared.module";
-import { CapitalCitiesModule } from "./capitalCities/capitalCities.module";
+import { WeatherForecastModule } from "./weatherForecast/weatherForecast.module";
 
 /* Components */
 import { AppComponent }  from './app.component';
@@ -15,7 +15,7 @@ import { AppComponent }  from './app.component';
 import { routing } from './app.routing';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, HomeModule, SharedModule, CapitalCitiesModule, routing ],
+  imports:      [ BrowserModule, HttpModule, HomeModule, SharedModule, WeatherForecastModule, routing ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
