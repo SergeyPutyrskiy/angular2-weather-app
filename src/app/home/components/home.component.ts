@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ElementRef} from '@angular/core';
 import { HomeService } from '../services/home.service';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,12 @@ import { Observable } from 'rxjs/Rx';
                         <li><p>Wind</p> {{listCities.wind.speed}}</li>
                       </ul>
                     </li>
-                    <li><a class="weatherOnFiveDays" [routerLink]="['weather-details-component', 1]">Get weather on 5 days</a></li>
+                    <li>
+                      <button class="weatherOnFiveDays" 
+                        [attr.data-city-id]='listCities.id' 
+                        [routerLink]="['weather-details-component', 1]" 
+                        (click)="getWeatherDetails($event)">Get weather on 5 days</button>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -44,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscriptionDataWeather: any;
   loader: boolean = false;
 
-  constructor(private _homeService: HomeService) {}
+  constructor(private homeService: HomeService, private router: Router, private elementRef: ElementRef) {}
 
   ngOnInit() {
     let time = Observable.interval().windowTime(1000);
@@ -57,13 +63,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.loader = true;
 
-    this.subscriptionDataWeather = this._homeService.getWeather()
+    this.subscriptionDataWeather = this.homeService.getWeather()
       .retry(5)
       .subscribe(
         weather => {
           this.weather = [];
           this.weather.push(weather);
           this.loader = false;
+          //console.log(weather);
         },
         error	=> {
           console.log(error);
@@ -75,5 +82,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptionTime.unsubscribe();
     this.subscriptionDataWeather.unsubscribe();
+  }
+
+  getWeatherDetails(e: any) {
+    let dataCityId: number = e.target.getAttribute('data-city-id');
+    this.router.navigate(['weather', dataCityId]);
   }
 }

@@ -1,4 +1,4 @@
-import {Routes, RouterModule, Route} from '@angular/router';
+import {Routes, RouterModule } from '@angular/router';
 
 /* Import components for use in routing */
 import { HomeComponent } from './home/components/home.component';

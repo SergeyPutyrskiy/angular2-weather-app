@@ -8,13 +8,18 @@ export class HomeService {
 
   constructor(private http: Http) {}
 
+  /*
   getWeather(): Observable<any> {
     return Observable
-      //.interval(60*30*1000)
       .interval(400*10)
       .flatMap(() => {
         return this.http.get(this.url).map(res => res.json());
       });
+  }
+  */
+
+  getWeather(): Observable<any> {
+    return this.http.get(this.url).map(res => res.json());
 
   }
 }

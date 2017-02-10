@@ -11,9 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var home_service_1 = require('../services/home.service');
 var Rx_1 = require('rxjs/Rx');
+var router_1 = require('@angular/router');
 var HomeComponent = (function () {
-    function HomeComponent(_homeService) {
-        this._homeService = _homeService;
+    function HomeComponent(homeService, router, elementRef) {
+        this.homeService = homeService;
+        this.router = router;
+        this.elementRef = elementRef;
         this.weather = [];
         this.time = new Date().toLocaleTimeString();
         this.today = Date.now();
@@ -26,12 +29,13 @@ var HomeComponent = (function () {
             _this.time = new Date().toLocaleTimeString();
         });
         this.loader = true;
-        this.subscriptionDataWeather = this._homeService.getWeather()
+        this.subscriptionDataWeather = this.homeService.getWeather()
             .retry(5)
             .subscribe(function (weather) {
             _this.weather = [];
             _this.weather.push(weather);
             _this.loader = false;
+            //console.log(weather);
         }, function (error) {
             console.log(error);
             _this.loader = false;
@@ -41,13 +45,17 @@ var HomeComponent = (function () {
         this.subscriptionTime.unsubscribe();
         this.subscriptionDataWeather.unsubscribe();
     };
+    HomeComponent.prototype.getWeatherDetails = function (e) {
+        var dataCityId = e.target.getAttribute('data-city-id');
+        this.router.navigate(['weather', dataCityId]);
+    };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home-component',
-            template: "\n              <div *ngIf=\"loader == true\" class=\"loader\">\n                <i class=\"fa fa-spinner fa-pulse fa-3x\" aria-hidden=\"true\"></i>\n              </div>\n              <div class=\"dateTime\">\n                <p class=\"time\">{{ time }}</p>\n                <p class=\"date\">{{ today | date }}</p>\n              </div>\n              <div class=\"currentWeather mainContent\" *ngFor=\" let object of weather\">\n                <div class=\"city\" *ngFor=\" let listCities of object.list \">\n                  <ul class=\"cityWeather\">\n                    <li class=\"itemCityTitle\"><h2 class=\"cityTitle\">Weather in {{ listCities.name }}</h2></li>\n                    <li class=\"itemTemperature\"><p class=\"temperature\"> {{listCities.main.temp | number:'1.1-1'}} \u00B0C</p></li>\n                    <li class=\"details\">\n                      <ul>\n                        <li><p>Humidity</p> {{listCities.main.humidity}}</li>\n                        <li><p>Pressure</p> {{listCities.main.pressure}}</li>\n                        <li><p>Max</p> {{listCities.main.temp_max}}</li>\n                        <li><p>Min</p> {{listCities.main.temp_min}}</li>\n                        <li><p>Wind</p> {{listCities.wind.speed}}</li>\n                      </ul>\n                    </li>\n                    <li><a class=\"weatherOnFiveDays\" [routerLink]=\"['weather-details-component', 1]\">Get weather on 5 days</a></li>\n                  </ul>\n                </div>\n              </div>\n              <router-outlet></router-outlet>\n            ",
+            template: "\n              <div *ngIf=\"loader == true\" class=\"loader\">\n                <i class=\"fa fa-spinner fa-pulse fa-3x\" aria-hidden=\"true\"></i>\n              </div>\n              <div class=\"dateTime\">\n                <p class=\"time\">{{ time }}</p>\n                <p class=\"date\">{{ today | date }}</p>\n              </div>\n              <div class=\"currentWeather mainContent\" *ngFor=\" let object of weather\">\n                <div class=\"city\" *ngFor=\" let listCities of object.list \">\n                  <ul class=\"cityWeather\">\n                    <li class=\"itemCityTitle\"><h2 class=\"cityTitle\">Weather in {{ listCities.name }}</h2></li>\n                    <li class=\"itemTemperature\"><p class=\"temperature\"> {{listCities.main.temp | number:'1.1-1'}} \u00B0C</p></li>\n                    <li class=\"details\">\n                      <ul>\n                        <li><p>Humidity</p> {{listCities.main.humidity}}</li>\n                        <li><p>Pressure</p> {{listCities.main.pressure}}</li>\n                        <li><p>Max</p> {{listCities.main.temp_max}}</li>\n                        <li><p>Min</p> {{listCities.main.temp_min}}</li>\n                        <li><p>Wind</p> {{listCities.wind.speed}}</li>\n                      </ul>\n                    </li>\n                    <li>\n                      <button class=\"weatherOnFiveDays\" \n                        [attr.data-city-id]='listCities.id' \n                        [routerLink]=\"['weather-details-component', 1]\" \n                        (click)=\"getWeatherDetails($event)\">Get weather on 5 days</button>\n                    </li>\n                  </ul>\n                </div>\n              </div>\n              <router-outlet></router-outlet>\n            ",
             providers: [home_service_1.HomeService]
         }), 
-        __metadata('design:paramtypes', [home_service_1.HomeService])
+        __metadata('design:paramtypes', [home_service_1.HomeService, router_1.Router, core_1.ElementRef])
     ], HomeComponent);
     return HomeComponent;
 }());
