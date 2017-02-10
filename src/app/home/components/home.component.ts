@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
               <div *ngIf="loader == true" class="loader">
                 <i class="fa fa-spinner fa-pulse fa-3x" aria-hidden="true"></i>
               </div>
+              <div *ngIf="failedRequest == true" class="failedRequest">
+                <h1>Sorry, requested data hasn't arrived, please refresh page.</h1>
+              </div>
               <div class="dateTime">
                 <p class="time">{{ time }}</p>
                 <p class="date">{{ today | date }}</p>
@@ -37,7 +40,6 @@ import { Router } from '@angular/router';
                   </ul>
                 </div>
               </div>
-              <router-outlet></router-outlet>
             `,
   providers: [ HomeService ]
 })
@@ -49,6 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscriptionTime: any;
   subscriptionDataWeather: any;
   loader: boolean = false;
+  failedRequest: boolean = false;
 
   constructor(private homeService: HomeService, private router: Router, private elementRef: ElementRef) {}
 
@@ -67,7 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .retry(5)
       .subscribe(
         weather => {
-          this.weather = [];
+          //this.weather = [];
           this.weather.push(weather);
           this.loader = false;
           //console.log(weather);
@@ -75,6 +78,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         error	=> {
           console.log(error);
           this.loader = false;
+          this.failedRequest = true;
         }
       );
   }

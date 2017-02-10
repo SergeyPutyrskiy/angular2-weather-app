@@ -83,6 +83,16 @@ table {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.failedRequest {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.failedRequest h1 {
+  padding: 30px 0 0 15px;
+  font-size: 30px;
+}
 
 
 /* Headers */
@@ -120,8 +130,7 @@ h2 {
 
 /* Date time */
 .dateTime {
-  padding-top: 30px;
-  padding-right: 15px;
+  padding: 30px 40px 0;
   float: right;
 }
 .date, .time {
@@ -156,14 +165,14 @@ h2 {
   line-height: 25px;
 }
 .currentWeather .city {
-  margin-top: 80px;
+  display: inline-block;
+  margin: 80px 40px 0;
 }
-.currentWeather .city:first-child {
+.currentWeather .city:nth-child(-n+2) {
   margin-top: 0;
 }
 .currentWeather .cityWeather {
   position: relative;
-  margin-top: 20px;
   padding: 15px;
   background-color: #f0f6ff;
   box-shadow: 0 0 8px #888888;
