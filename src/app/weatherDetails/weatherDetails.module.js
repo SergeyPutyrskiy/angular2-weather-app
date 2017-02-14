@@ -11,21 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 /* Components */
-var home_component_1 = require('./components/home.component');
+var weatherDetails_component_1 = require('./components/weatherDetails.component');
 /* Routing */
-//import { homeRouting } from './routing/home.routing';
-var HomeModule = (function () {
-    function HomeModule() {
+var weatherDetails_routing_1 = require('./routing/weatherDetails.routing');
+var WeatherDetailsModule = (function () {
+    function WeatherDetailsModule() {
     }
-    HomeModule = __decorate([
+    WeatherDetailsModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule],
-            declarations: [home_component_1.HomeComponent],
-            exports: [home_component_1.HomeComponent]
+            imports: [common_1.CommonModule, weatherDetails_routing_1.weatherDetailsRouting],
+            declarations: [weatherDetails_component_1.WeatherDetailsComponent],
+            exports: [weatherDetails_component_1.WeatherDetailsComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeModule);
-    return HomeModule;
+    ], WeatherDetailsModule);
+    return WeatherDetailsModule;
 }());
-exports.HomeModule = HomeModule;
-//# sourceMappingURL=home.module.js.map
+exports.WeatherDetailsModule = WeatherDetailsModule;
+//# sourceMappingURL=weatherDetails.module.js.map

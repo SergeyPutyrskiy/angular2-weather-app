@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-/* Modules */
-import { SharedModule } from '../shared/shared.module';
-
 /* Components */
 import { WeatherForecastComponent } from './components/weatherForecast.component';
 
+/* Routing */
+import { weatherForecastRouting } from './routing/weatherForecast.routing';
+
 @NgModule({
-  imports: [ CommonModule, SharedModule ],
+  imports: [ CommonModule, weatherForecastRouting ],
   declarations: [ WeatherForecastComponent ],
   exports: [ WeatherForecastComponent ]
 })

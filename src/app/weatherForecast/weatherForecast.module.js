@@ -10,16 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-/* Modules */
-var shared_module_1 = require('../shared/shared.module');
 /* Components */
 var weatherForecast_component_1 = require('./components/weatherForecast.component');
+/* Routing */
+var weatherForecast_routing_1 = require('./routing/weatherForecast.routing');
 var WeatherForecastModule = (function () {
     function WeatherForecastModule() {
     }
     WeatherForecastModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, shared_module_1.SharedModule],
+            imports: [common_1.CommonModule, weatherForecast_routing_1.weatherForecastRouting],
             declarations: [weatherForecast_component_1.WeatherForecastComponent],
             exports: [weatherForecast_component_1.WeatherForecastComponent]
         }), 

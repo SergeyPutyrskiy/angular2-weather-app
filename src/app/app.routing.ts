@@ -1,12 +1,11 @@
 import {Routes, RouterModule } from '@angular/router';
 
 /* Import components for use in routing */
-import { WeatherDetailsComponent } from './home/components/weatherDetails.component';
-import { WeatherForecastComponent } from './weatherForecast/components/weatherForecast.component';
+import { HomeComponent } from './home/components/home.component';
+import { AppComponent } from './app.component';
 
 const routes : Routes = [
-  { path: 'weather/:id', component: WeatherDetailsComponent },
-  { path: 'weather-forecast', component: WeatherForecastComponent }
+  { path: '', component: HomeComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
