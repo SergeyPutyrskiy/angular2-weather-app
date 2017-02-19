@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'navigation-component',
   template: `
               <nav class="navigation">
-                <a href="#">Home</a>
+                <a routerLink="">Home</a>
                 <a href="#">Detail forecast</a>
-                <a href="#">Forecast in capitals</a>
+                <a routerLink="capital-cities">Forecast in capitals</a>
               </nav>
             `
 })
