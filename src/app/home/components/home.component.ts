@@ -21,17 +21,17 @@ import { Router } from '@angular/router';
                 <div class="city" *ngFor=" let listCities of object.list ">
                   <ul class="cityWeather">
                     <li class="itemCityTitle"><h2 class="cityTitle">Weather in {{ listCities.name }}</h2></li>
-                    <li class="itemTemperature"><p class="temperature"> {{listCities.main.temp | number:'1.1-1'}} °C</p></li>
+                    <li class="itemTemperature"><p class="temperature"> {{listCities.main.temp | number:'1.0-0'}} °C</p></li>
                     <li class="details">
                       <ul>
                         <li><p>Humidity</p> {{listCities.main.humidity}}</li>
-                        <li><p>Pressure</p> {{listCities.main.pressure}}</li>
-                        <li><p>Max</p> {{listCities.main.temp_max}}</li>
-                        <li><p>Min</p> {{listCities.main.temp_min}}</li>
-                        <li><p>Wind</p> {{listCities.wind.speed}}</li>
+                        <li><p>Pressure</p> {{listCities.main.pressure | number:'1.0-0'}}</li>
+                        <li><p>Max</p> {{listCities.main.temp_max | number:'1.0-0'}}</li>
+                        <li><p>Min</p> {{listCities.main.temp_min | number:'1.0-0'}}</li>
+                        <li><p>Wind</p> {{listCities.wind.speed | number:'1.1-1'}}</li>
                       </ul>
                     </li>
-                    <li>
+                    <li class="liControl">
                       <button class="weatherOnFiveDays" 
                         [attr.data-city-id]='listCities.id' 
                         [routerLink]="['weather-details-component', 1]" 

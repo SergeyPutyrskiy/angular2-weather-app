@@ -13,13 +13,13 @@ var common_1 = require('@angular/common');
 /* Components */
 var home_component_1 = require('./components/home.component');
 /* Routing */
-//import { homeRouting } from './routing/home.routing';
+var home_routing_1 = require('./routing/home.routing');
 var HomeModule = (function () {
     function HomeModule() {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule],
+            imports: [common_1.CommonModule, home_routing_1.homeRouting],
             declarations: [home_component_1.HomeComponent],
             exports: [home_component_1.HomeComponent]
         }), 

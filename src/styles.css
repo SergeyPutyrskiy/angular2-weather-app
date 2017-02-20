@@ -215,10 +215,18 @@ h2 {
 .currentWeather .cityWeather li p {
   font-weight: 600;
 }
+
+.currentWeather .cityWeather .liControl {
+  display: block;
+  text-align: left;
+}
+
 .currentWeather .weatherOnFiveDays {
-  position: absolute;
-  right: 0;
-  bottom: -45px;
+  /*position: absolute;*/
+  /*right: 0;*/
+  /*bottom: -45px;*/
+  margin-top: 15px;
+  width: 100%;
   padding: 8px 10px;
   background-color: #3b9cff;
   text-decoration: none;

@@ -19,7 +19,6 @@ var weatherForecast_module_1 = require("./weatherForecast/weatherForecast.module
 var weatherDetails_module_1 = require("./weatherDetails/weatherDetails.module");
 /* Components */
 var app_component_1 = require('./app.component');
-var home_component_1 = require('./home/components/home.component');
 /* Routing */
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
@@ -28,7 +27,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule, home_module_1.HomeModule, shared_module_1.SharedModule, weatherForecast_module_1.WeatherForecastModule, weatherDetails_module_1.WeatherDetailsModule, app_routing_1.routing],
-            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
+            declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
