@@ -15,17 +15,31 @@ var WeatherDetailsComponent = (function () {
     function WeatherDetailsComponent(weatherDetailsService, route) {
         this.weatherDetailsService = weatherDetailsService;
         this.route = route;
+        this.weatherDetails = [];
     }
     WeatherDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.subscription = this.route.params.subscribe(function (params) {
             _this.id = +params['id'];
+            _this.weatherDetailsService.getDetailsWeather(_this.id.toString())
+                .retry(5)
+                .subscribe(function (weatherDetails) {
+                _this.weatherDetails.push(weatherDetails);
+                console.log(_this.weatherDetails);
+                //console.log(this.weatherDetails[0].city.name);
+            }, function (error) {
+                console.log(error);
+            });
         });
+        //this.subscription =
+    };
+    WeatherDetailsComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
     };
     WeatherDetailsComponent = __decorate([
         core_1.Component({
             selector: 'weather-details-component',
-            template: "\n              <div class=\"mainContent\">\n                Weather Details Component {{id}}\n              </div>\n            ",
+            template: "\n              <div class=\"mainContent\">\n              \n                <div *ngFor=\"let object of weatherDetails\">\n                  <h2>{{ object.city.name }}</h2>\n                </div>\n              \n              </div>\n            ",
             providers: [weatherDetails_service_1.WeatherDetailsService]
         }), 
         __metadata('design:paramtypes', [weatherDetails_service_1.WeatherDetailsService, router_1.ActivatedRoute])

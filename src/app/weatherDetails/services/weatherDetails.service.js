@@ -10,22 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var Rx_1 = require("rxjs/Rx");
 var WeatherDetailsService = (function () {
     function WeatherDetailsService(http) {
         this.http = http;
-        //private _url = 'https://jsonplaceholder.typicode.com/posts';
-        //private _url = 'http://api.openweathermap.org/data/2.5/weather?id=2172797&APPID=fccb137619df444c88e89f1b68ad6c19';
-        //private _url = 'http://api.openweathermap.org/data/2.5/weather?q=Kharkiv&APPID=fccb137619df444c88e89f1b68ad6c19';
-        this.url = 'http://api.openweathermap.org/data/2.5/weather?id=706483&units=metric&APPID=fccb137619df444c88e89f1b68ad6c19';
+        this.url = 'http://api.openweathermap.org/data/2.5/forecast?id=';
     }
-    WeatherDetailsService.prototype.getWeather = function () {
-        var _this = this;
-        return Rx_1.Observable
-            .interval(100 * 20)
-            .flatMap(function () {
-            return _this.http.get(_this.url).map(function (res) { return res.json(); });
-        });
+    WeatherDetailsService.prototype.getDetailsWeather = function (id) {
+        return this.http.get(this.url + id + '&units=metric&APPID=fccb137619df444c88e89f1b68ad6c19').map(function (res) { return res.json(); });
     };
     WeatherDetailsService = __decorate([
         core_1.Injectable(), 

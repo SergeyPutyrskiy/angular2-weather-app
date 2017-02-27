@@ -33,10 +33,8 @@ var HomeComponent = (function () {
         this.subscriptionDataWeather = this.homeService.getWeather()
             .retry(5)
             .subscribe(function (weather) {
-            //this.weather = [];
             _this.weather.push(weather);
             _this.loader = false;
-            //console.log(weather);
         }, function (error) {
             console.log(error);
             _this.loader = false;

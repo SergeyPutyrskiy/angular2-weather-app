@@ -52,6 +52,7 @@ table {
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
+  position: relative;
 }
 .floatLeft {
   float: left;
@@ -60,7 +61,7 @@ table {
   float: right;
 }
 .mainContent {
-  padding: 30px 15px 0;
+  padding: 30px 0;
   margin-right: auto;
   margin-left: auto;
 }
@@ -130,7 +131,7 @@ h2 {
 
 /* Date time */
 .dateTime {
-  padding: 30px 40px 0;
+  padding: 30px 0;
   float: right;
 }
 .date, .time {
@@ -166,7 +167,7 @@ h2 {
 }
 .currentWeather .city {
   display: inline-block;
-  margin: 80px 40px 0;
+  margin: 80px 40px 0 0;
 }
 .currentWeather .city:nth-child(-n+2) {
   margin-top: 0;

@@ -70,10 +70,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       .retry(5)
       .subscribe(
         weather => {
-          //this.weather = [];
           this.weather.push(weather);
           this.loader = false;
-          //console.log(weather);
         },
         error	=> {
           console.log(error);
