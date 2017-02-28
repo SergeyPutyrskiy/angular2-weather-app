@@ -16,6 +16,8 @@ var WeatherDetailsComponent = (function () {
         this.weatherDetailsService = weatherDetailsService;
         this.route = route;
         this.weatherDetails = [];
+        this.weatherByDate = [];
+        this.sortedWeatherData = [];
     }
     WeatherDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,12 +28,26 @@ var WeatherDetailsComponent = (function () {
                 .subscribe(function (weatherDetails) {
                 _this.weatherDetails.push(weatherDetails);
                 console.log(_this.weatherDetails);
-                //console.log(this.weatherDetails[0].city.name);
+                // console.log(this.weatherDetails[0].list[0].dt_txt);
+                // var startIndex = this.weatherDetails[0].list[0].dt_txt.search(/\s/);
+                // var cuttedDate = this.weatherDetails[0].list[0].dt_txt.slice(0, startIndex);
+                // console.log(cuttedDate);
+                //
+                // for(var i = 0; i < this.weatherDetails.length; i++) {
+                //   //console.log(this.weatherDetails[i].list);
+                //   console.log(this.weatherDetails[i].list.length);
+                //
+                //   //this.sortedWeatherData.push(this.weatherDetails[i].list);
+                //   this.eachDataByHour = this.weatherDetails[i].list;
+                // }
+                //
+                // for(var j = 0; j < this.eachDataByHour.length; i++) {
+                //   console.log(this.eachDataByHour[j]);
+                // }
             }, function (error) {
                 console.log(error);
             });
         });
-        //this.subscription =
     };
     WeatherDetailsComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
@@ -39,7 +55,7 @@ var WeatherDetailsComponent = (function () {
     WeatherDetailsComponent = __decorate([
         core_1.Component({
             selector: 'weather-details-component',
-            template: "\n              <div class=\"mainContent\">\n              \n                <div *ngFor=\"let object of weatherDetails\">\n                  <h2>{{ object.city.name }}</h2>\n                </div>\n              \n              </div>\n            ",
+            template: "\n              <div class=\"mainContent\">\n\n                <div *ngFor=\"let object of weatherDetails\">\n                  <h2>Weather in {{ object.city.name }} on 5 days</h2>\n                  \n                  <!--<div class=\"weatherByDate\" *ngFor=\"let \">-->\n                    <!---->\n                  <!--</div>-->\n                  \n                </div>\n              \n              </div>\n            ",
             providers: [weatherDetails_service_1.WeatherDetailsService]
         }), 
         __metadata('design:paramtypes', [weatherDetails_service_1.WeatherDetailsService, router_1.ActivatedRoute])
