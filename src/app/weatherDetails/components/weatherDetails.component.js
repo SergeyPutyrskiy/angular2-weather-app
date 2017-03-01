@@ -16,8 +16,6 @@ var WeatherDetailsComponent = (function () {
         this.weatherDetailsService = weatherDetailsService;
         this.route = route;
         this.weatherDetails = [];
-        this.weatherByDate = [];
-        this.sortedWeatherData = [];
     }
     WeatherDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,6 +26,7 @@ var WeatherDetailsComponent = (function () {
                 .subscribe(function (weatherDetails) {
                 _this.weatherDetails.push(weatherDetails);
                 console.log(_this.weatherDetails);
+                //console.log(this.weatherDetails[0].list);
                 // console.log(this.weatherDetails[0].list[0].dt_txt);
                 // var startIndex = this.weatherDetails[0].list[0].dt_txt.search(/\s/);
                 // var cuttedDate = this.weatherDetails[0].list[0].dt_txt.slice(0, startIndex);
@@ -35,12 +34,12 @@ var WeatherDetailsComponent = (function () {
                 //
                 // for(var i = 0; i < this.weatherDetails.length; i++) {
                 //   //console.log(this.weatherDetails[i].list);
-                //   console.log(this.weatherDetails[i].list.length);
+                //   //console.log(this.weatherDetails[i].list.length);
                 //
-                //   //this.sortedWeatherData.push(this.weatherDetails[i].list);
-                //   this.eachDataByHour = this.weatherDetails[i].list;
-                // }
-                //
+                //   console.log(this.weatherDetails[i]);
+                //this.sortedWeatherData.push(this.weatherDetails[i].list);
+                //this.eachDataByHour = this.weatherDetails[i].list;
+                //}
                 // for(var j = 0; j < this.eachDataByHour.length; i++) {
                 //   console.log(this.eachDataByHour[j]);
                 // }

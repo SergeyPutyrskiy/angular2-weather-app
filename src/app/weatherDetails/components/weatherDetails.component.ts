@@ -23,12 +23,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class WeatherDetailsComponent implements OnInit {
-  id: number;
-  subscription: any;
-  private weatherDetails: Object[] = [];
-  private weatherByDate: Object[] = [];
-  private eachDataByHour: any;
-  private sortedWeatherData: Object[] = [];
+  private id: number;
+  private subscription: any;
+  private weatherDetails: Array<any> = [];
 
   constructor(private weatherDetailsService: WeatherDetailsService, private route: ActivatedRoute) {}
 
@@ -43,6 +40,9 @@ export class WeatherDetailsComponent implements OnInit {
             this.weatherDetails.push(weatherDetails);
             console.log(this.weatherDetails);
 
+
+            //console.log(this.weatherDetails[0].list);
+
             // console.log(this.weatherDetails[0].list[0].dt_txt);
             // var startIndex = this.weatherDetails[0].list[0].dt_txt.search(/\s/);
             // var cuttedDate = this.weatherDetails[0].list[0].dt_txt.slice(0, startIndex);
@@ -50,12 +50,14 @@ export class WeatherDetailsComponent implements OnInit {
             //
             // for(var i = 0; i < this.weatherDetails.length; i++) {
             //   //console.log(this.weatherDetails[i].list);
-            //   console.log(this.weatherDetails[i].list.length);
+            //   //console.log(this.weatherDetails[i].list.length);
             //
-            //   //this.sortedWeatherData.push(this.weatherDetails[i].list);
-            //   this.eachDataByHour = this.weatherDetails[i].list;
-            // }
-            //
+            //   console.log(this.weatherDetails[i]);
+
+              //this.sortedWeatherData.push(this.weatherDetails[i].list);
+              //this.eachDataByHour = this.weatherDetails[i].list;
+            //}
+
             // for(var j = 0; j < this.eachDataByHour.length; i++) {
             //   console.log(this.eachDataByHour[j]);
             // }
@@ -67,6 +69,7 @@ export class WeatherDetailsComponent implements OnInit {
           }
         );
     });
+
   }
 
   ngOnDestroy() {

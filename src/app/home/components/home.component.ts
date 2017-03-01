@@ -45,13 +45,13 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit, OnDestroy {
-  private weather: Object[] = [];
-  time = new Date().toLocaleTimeString();
-  today: number = Date.now();
-  subscriptionTime: any;
-  subscriptionDataWeather: any;
-  loader: boolean = false;
-  failedRequest: boolean = false;
+  private weather: Array<any> = [];
+  private time = new Date().toLocaleTimeString();
+  private today: number = Date.now();
+  private subscriptionTime: any;
+  private subscriptionDataWeather: any;
+  private loader: boolean = false;
+  private failedRequest: boolean = false;
 
   constructor(private homeService: HomeService, private router: Router, private elementRef: ElementRef) {}
 
