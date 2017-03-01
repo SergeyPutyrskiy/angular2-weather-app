@@ -16,6 +16,7 @@ var WeatherDetailsComponent = (function () {
         this.weatherDetailsService = weatherDetailsService;
         this.route = route;
         this.weatherDetails = [];
+        this.weatherDetailsByDays = [];
     }
     WeatherDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -25,24 +26,7 @@ var WeatherDetailsComponent = (function () {
                 .retry(5)
                 .subscribe(function (weatherDetails) {
                 _this.weatherDetails.push(weatherDetails);
-                console.log(_this.weatherDetails);
-                //console.log(this.weatherDetails[0].list);
-                // console.log(this.weatherDetails[0].list[0].dt_txt);
-                // var startIndex = this.weatherDetails[0].list[0].dt_txt.search(/\s/);
-                // var cuttedDate = this.weatherDetails[0].list[0].dt_txt.slice(0, startIndex);
-                // console.log(cuttedDate);
-                //
-                // for(var i = 0; i < this.weatherDetails.length; i++) {
-                //   //console.log(this.weatherDetails[i].list);
-                //   //console.log(this.weatherDetails[i].list.length);
-                //
-                //   console.log(this.weatherDetails[i]);
-                //this.sortedWeatherData.push(this.weatherDetails[i].list);
-                //this.eachDataByHour = this.weatherDetails[i].list;
-                //}
-                // for(var j = 0; j < this.eachDataByHour.length; i++) {
-                //   console.log(this.eachDataByHour[j]);
-                // }
+                _this.getSortedDateByDays();
             }, function (error) {
                 console.log(error);
             });
@@ -51,10 +35,14 @@ var WeatherDetailsComponent = (function () {
     WeatherDetailsComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
+    WeatherDetailsComponent.prototype.getSortedDateByDays = function () {
+        this.weatherDetailsByDays = this.weatherDetailsService.getSortedWeatherByDays(this.weatherDetails);
+        console.log("In component: ", this.weatherDetailsByDays);
+    };
     WeatherDetailsComponent = __decorate([
         core_1.Component({
             selector: 'weather-details-component',
-            template: "\n              <div class=\"mainContent\">\n\n                <div *ngFor=\"let object of weatherDetails\">\n                  <h2>Weather in {{ object.city.name }} on 5 days</h2>\n                  \n                  <!--<div class=\"weatherByDate\" *ngFor=\"let \">-->\n                    <!---->\n                  <!--</div>-->\n                  \n                </div>\n              \n              </div>\n            ",
+            template: "\n              <div class=\"mainContent\">\n\n                <div *ngFor=\"let object of weatherDetails\">\n                  <h2>Weather in {{ object.city.name }} on 5 days</h2>\n                  \n                  <!--<div class=\"weatherByDate\" *ngFor=\"let weatherByDay of weatherDetailsByDays\">-->\n                    <!--<p>{{ weatherByDay.clouds.all }}</p>-->\n                  <!--</div>-->\n                  \n                  <p>{{ weatherDetailsByDays }}</p>\n                  \n                </div>\n              \n              </div>\n            ",
             providers: [weatherDetails_service_1.WeatherDetailsService]
         }), 
         __metadata('design:paramtypes', [weatherDetails_service_1.WeatherDetailsService, router_1.ActivatedRoute])

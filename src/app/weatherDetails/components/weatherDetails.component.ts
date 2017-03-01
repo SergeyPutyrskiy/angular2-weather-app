@@ -11,9 +11,11 @@ import { ActivatedRoute } from '@angular/router';
                 <div *ngFor="let object of weatherDetails">
                   <h2>Weather in {{ object.city.name }} on 5 days</h2>
                   
-                  <!--<div class="weatherByDate" *ngFor="let ">-->
-                    <!---->
+                  <!--<div class="weatherByDate" *ngFor="let weatherByDay of weatherDetailsByDays">-->
+                    <!--<p>{{ weatherByDay.clouds.all }}</p>-->
                   <!--</div>-->
+                  
+                  <p>{{ weatherDetailsByDays }}</p>
                   
                 </div>
               
@@ -26,6 +28,7 @@ export class WeatherDetailsComponent implements OnInit {
   private id: number;
   private subscription: any;
   private weatherDetails: Array<any> = [];
+  private weatherDetailsByDays: Array<any> = [];
 
   constructor(private weatherDetailsService: WeatherDetailsService, private route: ActivatedRoute) {}
 
@@ -38,42 +41,22 @@ export class WeatherDetailsComponent implements OnInit {
         .subscribe(
           weatherDetails => {
             this.weatherDetails.push(weatherDetails);
-            console.log(this.weatherDetails);
-
-
-            //console.log(this.weatherDetails[0].list);
-
-            // console.log(this.weatherDetails[0].list[0].dt_txt);
-            // var startIndex = this.weatherDetails[0].list[0].dt_txt.search(/\s/);
-            // var cuttedDate = this.weatherDetails[0].list[0].dt_txt.slice(0, startIndex);
-            // console.log(cuttedDate);
-            //
-            // for(var i = 0; i < this.weatherDetails.length; i++) {
-            //   //console.log(this.weatherDetails[i].list);
-            //   //console.log(this.weatherDetails[i].list.length);
-            //
-            //   console.log(this.weatherDetails[i]);
-
-              //this.sortedWeatherData.push(this.weatherDetails[i].list);
-              //this.eachDataByHour = this.weatherDetails[i].list;
-            //}
-
-            // for(var j = 0; j < this.eachDataByHour.length; i++) {
-            //   console.log(this.eachDataByHour[j]);
-            // }
-
-
+            this.getSortedDateByDays();
           },
           error => {
             console.log(error);
           }
         );
     });
-
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  getSortedDateByDays() {
+    this.weatherDetailsByDays = this.weatherDetailsService.getSortedWeatherByDays(this.weatherDetails);
+    console.log("In component: ", this.weatherDetailsByDays);
   }
 
 }
