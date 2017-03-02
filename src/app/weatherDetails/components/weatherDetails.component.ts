@@ -6,16 +6,35 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'weather-details-component',
   template: `
-              <div class="mainContent">
+              <div class="mainContent weatherContainer weatherDetails">
 
                 <div *ngFor="let object of weatherDetails">
-                  <h2>Weather in {{ object.city.name }} on 5 days</h2>
+                  <h2 class="cityTitle">Weather in {{ object.city.name }} on 5 days</h2>
                   
-                  <!--<div class="weatherByDate" *ngFor="let weatherByDay of weatherDetailsByDays">-->
-                    <!--<p>{{ weatherByDay.clouds.all }}</p>-->
-                  <!--</div>-->
-                  
-                  <p>{{ weatherDetailsByDays }}</p>
+                  <div class="weatherByDate" *ngFor="let weatherByDay of weatherDetailsByDays; let first = first">
+                    <table class="outerBoxStyle">
+                      <thead>
+                        <tr>
+                          <th colspan="1"></th>
+                          <th>Description</th>
+                          <th>Temperature</th>
+                          <th>Humidity</th>
+                          <th>Pressure</th>
+                          <th>Min / Max temperature</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="weatherByHours innerBoxStyle" *ngFor="let weatherByHours of weatherByDay">
+                          <td>{{weatherByHours.dt_txt | extractTime}}</td>
+                          <td>{{weatherByHours.weather[0].description}}</td>
+                          <td>{{weatherByHours.main.temp | number:'1.0-0'}} °C</td>
+                          <td>{{weatherByHours.main.humidity}}</td>
+                          <td>{{weatherByHours.main.pressure | number:'1.0-0'}}</td>
+                          <td>{{weatherByHours.main.temp_min | number:'1.0-0'}} / {{weatherByHours.main.temp_max | number:'1.0-0'}} °C</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                   
                 </div>
               
