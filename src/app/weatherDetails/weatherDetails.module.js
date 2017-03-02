@@ -12,6 +12,8 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 /* Components */
 var weatherDetails_component_1 = require('./components/weatherDetails.component');
+/* Pipes */
+var extractTime_pipe_1 = require('./pipes/extractTime.pipe');
 /* Routing */
 var weatherDetails_routing_1 = require('./routing/weatherDetails.routing');
 var WeatherDetailsModule = (function () {
@@ -20,7 +22,7 @@ var WeatherDetailsModule = (function () {
     WeatherDetailsModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, weatherDetails_routing_1.weatherDetailsRouting],
-            declarations: [weatherDetails_component_1.WeatherDetailsComponent],
+            declarations: [weatherDetails_component_1.WeatherDetailsComponent, extractTime_pipe_1.ExtractTime],
             exports: [weatherDetails_component_1.WeatherDetailsComponent]
         }), 
         __metadata('design:paramtypes', [])
