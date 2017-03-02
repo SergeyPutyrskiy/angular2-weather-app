@@ -94,6 +94,15 @@ table {
   padding: 30px 0 0 15px;
   font-size: 30px;
 }
+.outerBoxStyle {
+  background-color: #f0f6ff;
+  box-shadow: 0 0 8px #888888;
+  border-radius: 3px;
+}
+.innerBoxStyle {
+  background-color: #dfecff;
+  box-shadow: 0 0 3px #888888;
+}
 
 
 /* Headers */
@@ -162,70 +171,63 @@ h2 {
 
 /* Home component */
 /* Current weather block */
-.currentWeather {
+.weatherContainer {
   line-height: 25px;
 }
-.currentWeather .city {
+.weatherContainer .itemWeather {
   display: inline-block;
   margin: 80px 40px 0 0;
 }
-.currentWeather .city:nth-child(-n+2) {
+.weatherContainer .city:nth-child(-n+2) {
   margin-top: 0;
 }
-.currentWeather .cityWeather {
+.weatherContainer .cityWeather {
   position: relative;
   padding: 15px;
-  background-color: #f0f6ff;
-  box-shadow: 0 0 8px #888888;
-  display: inline-block;
-  border-radius: 3px;
 }
-.currentWeather .cityWeather li {
+.weatherContainer .cityWeather li {
   display: inline-block;
   padding-right: 30px;
   font-size: 17px;
   text-align: center;
 }
-.currentWeather .cityWeather .itemCityTitle,
-.currentWeather .cityWeather .itemTemperature {
+.weatherContainer .cityWeather .itemCityTitle,
+.weatherContainer .cityWeather .itemTemperature {
   padding-left: 0;
   padding-right: 0;
   text-align: left;
 }
-.currentWeather .cityWeather .itemTemperature {
+.weatherContainer .cityWeather .itemTemperature {
   display: block;
   padding: 20px 0;
 }
-.currentWeather .cityWeather .cityTitle {
+.cityTitle {
   font-size: 25px;
   color: #214acb;
   font-weight: 600;
 }
-.currentWeather .cityWeather .temperature {
+.weatherContainer .cityWeather .temperature {
   font-weight: 500;
   font-size: 45px;
 }
-.currentWeather .cityWeather .details {
+.weatherContainer .cityWeather .details {
   padding: 5px 10px;
   background-color: #dfecff;
   box-shadow: 0 0 3px #888888;
 }
-.currentWeather .cityWeather li:last-child {
+.weatherContainer .cityWeather li:last-child {
   padding-right: 0;
 }
-.currentWeather .cityWeather li p {
+.weatherContainer .cityWeather li p {
   font-weight: 600;
 }
 
-.currentWeather .cityWeather .liControl {
+.weatherContainer .cityWeather .liControl {
   display: block;
   text-align: left;
 }
 
-.currentWeather .weatherOnFiveDays {
-  /*position: absolute;*/
-  /*right: 0;*/
-  /*bottom: -45px;*/
+.weatherContainer .weatherOnFiveDays {
   margin-top: 15px;
   width: 100%;
   padding: 8px 10px;
@@ -245,5 +247,21 @@ h2 {
   font-size: 30px;
   text-align: center;
 }
+
+
+/* Weather details component */
+.weatherDetails .weatherByDate {
+  margin-bottom: 60px;
+}
+.weatherDetails .weatherByHours p {
+  display: inline-block;
+  float: left;
+}
+.weatherDetails table tr th,
+.weatherDetails table tr td {
+  padding: 10px 15px;
+  text-align: center;
+}
+
 
 
