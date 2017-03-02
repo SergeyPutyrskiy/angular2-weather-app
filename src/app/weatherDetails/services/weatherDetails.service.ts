@@ -30,7 +30,7 @@ export class WeatherDetailsService {
       sortedDataByDay: Array<any> = [],
       count: number = 0;
 
-    let weatherByDays = data.map(function (itemList) {
+    data.map(function (itemList) {
       itemList.list.map(function (itemEachHourData: any) {
         startIndex = itemEachHourData.dt_txt.search(/\s/);
         currentDate = itemEachHourData.dt_txt.slice(0, startIndex);
@@ -50,6 +50,6 @@ export class WeatherDetailsService {
       return sortedDataByDay;
     });
 
-    return weatherByDays;
+    return sortedDataByDay;
   }
 }
