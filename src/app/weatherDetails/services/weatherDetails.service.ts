@@ -14,7 +14,7 @@ export class WeatherDetailsService {
    * @returns {Observable<R>}
    * Make request to the server and get weather forecast for 5 days
    */
-  getDetailsWeather(id: String): Observable<any> {
+  getDetailsWeather(id: string): Observable<any> {
     return this.http.get(this.url+id+'&units=metric&APPID=fccb137619df444c88e89f1b68ad6c19').map(res => res.json());
   }
 
@@ -26,7 +26,7 @@ export class WeatherDetailsService {
    */
   getSortedWeatherByDays(data: Array<any>): Array<any> {
     let startIndex: number,
-      currentDate: String, prevDate: String,
+      currentDate: string, prevDate: string,
       sortedDataByDay: Array<any> = [],
       count: number = 0;
 
