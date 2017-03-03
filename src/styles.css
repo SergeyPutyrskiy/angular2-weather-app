@@ -257,8 +257,15 @@ h2 {
   display: inline-block;
   float: left;
 }
-.weatherDetails table tr th,
-.weatherDetails table tr td {
+.weatherDetails .weatherByDate table thead tr {
+  background-color: #a6d2ff;
+}
+.weatherDetails table tr:nth-child(odd) {
+  background-color: #dfecff;
+  box-shadow: 0 0 3px #888888;
+}
+.weatherDetails table th,
+.weatherDetails table td {
   padding: 10px 15px;
   text-align: center;
 }

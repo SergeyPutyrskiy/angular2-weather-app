@@ -24,7 +24,7 @@ import { ActivatedRoute } from '@angular/router';
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="weatherByHours innerBoxStyle" *ngFor="let weatherByHours of weatherByDay">
+                        <tr class="weatherByHours" *ngFor="let weatherByHours of weatherByDay">
                           <td>{{weatherByHours.dt_txt | extractTime}}</td>
                           <td>{{weatherByHours.weather[0].description}}</td>
                           <td>{{weatherByHours.main.temp | number:'1.0-0'}} °C</td>
