@@ -14,24 +14,24 @@ import { Router } from '@angular/router';
                 <h1>Sorry, requested data hasn't arrived, please refresh page.</h1>
               </div>
               <div class="dateTime">
-                <p class="time">{{ time }}</p>
-                <p class="date">{{ today | date }}</p>
+                <p class="time">{{time}}</p>
+                <p class="date">{{today | date}}</p>
               </div>
-              <div class="currentWeather mainContent" *ngFor=" let object of weather">
-                <div class="city" *ngFor=" let listCities of object.list ">
-                  <ul class="cityWeather">
+              <div class="mainContent weatherContainer" *ngFor=" let object of weather">
+                <div class="itemWeather" *ngFor=" let listCities of object.list ">
+                  <ul class="cityWeather outerBoxStyle">
                     <li class="itemCityTitle"><h2 class="cityTitle">Weather in {{ listCities.name }}</h2></li>
-                    <li class="itemTemperature"><p class="temperature"> {{listCities.main.temp | number:'1.1-1'}} °C</p></li>
-                    <li class="details">
+                    <li class="itemTemperature"><p class="temperature"> {{listCities.main.temp | number:'1.0-0'}} °C</p></li>
+                    <li class="details innerBoxStyle">
                       <ul>
-                        <li><p>Humidity</p> {{listCities.main.humidity}}</li>
-                        <li><p>Pressure</p> {{listCities.main.pressure}}</li>
-                        <li><p>Max</p> {{listCities.main.temp_max}}</li>
-                        <li><p>Min</p> {{listCities.main.temp_min}}</li>
-                        <li><p>Wind</p> {{listCities.wind.speed}}</li>
+                        <li><p>Humidity</p>{{listCities.main.humidity}}</li>
+                        <li><p>Pressure</p>{{listCities.main.pressure | number:'1.0-0'}}</li>
+                        <li><p>Max</p>{{listCities.main.temp_max | number:'1.0-0'}}</li>
+                        <li><p>Min</p>{{listCities.main.temp_min | number:'1.0-0'}}</li>
+                        <li><p>Wind</p>{{listCities.wind.speed | number:'1.1-1'}}</li>
                       </ul>
                     </li>
-                    <li>
+                    <li class="liControl">
                       <button class="weatherOnFiveDays" 
                         [attr.data-city-id]='listCities.id' 
                         [routerLink]="['weather-details-component', 1]" 
@@ -45,13 +45,13 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit, OnDestroy {
-  private weather: Object[] = [];
-  time = new Date().toLocaleTimeString();
-  today: number = Date.now();
-  subscriptionTime: any;
-  subscriptionDataWeather: any;
-  loader: boolean = false;
-  failedRequest: boolean = false;
+  private weather: Array<any> = [];
+  private time = new Date().toLocaleTimeString();
+  private today: number = Date.now();
+  private subscriptionTime: any;
+  private subscriptionDataWeather: any;
+  private loader: boolean = false;
+  private failedRequest: boolean = false;
 
   constructor(private homeService: HomeService, private router: Router, private elementRef: ElementRef) {}
 
@@ -70,10 +70,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       .retry(5)
       .subscribe(
         weather => {
-          //this.weather = [];
           this.weather.push(weather);
           this.loader = false;
-          //console.log(weather);
         },
         error	=> {
           console.log(error);

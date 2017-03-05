@@ -9,23 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-/* Components */
-var home_component_1 = require('./components/home.component');
-/* Routing */
-var home_routing_1 = require('./routing/home.routing');
-var HomeModule = (function () {
-    function HomeModule() {
+var ExtractTime = (function () {
+    function ExtractTime() {
     }
-    HomeModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, home_routing_1.homeRouting],
-            declarations: [home_component_1.HomeComponent],
-            exports: [home_component_1.HomeComponent]
-        }), 
+    ExtractTime.prototype.transform = function (value) {
+        var startIndex, currentTime;
+        if (value) {
+            startIndex = value.search(/\s/);
+            currentTime = value.slice(startIndex);
+            return currentTime;
+        }
+    };
+    ExtractTime = __decorate([
+        core_1.Pipe({ name: 'extractTime' }), 
         __metadata('design:paramtypes', [])
-    ], HomeModule);
-    return HomeModule;
+    ], ExtractTime);
+    return ExtractTime;
 }());
-exports.HomeModule = HomeModule;
-//# sourceMappingURL=home.module.js.map
+exports.ExtractTime = ExtractTime;
+//# sourceMappingURL=extractTime.pipe.js.map

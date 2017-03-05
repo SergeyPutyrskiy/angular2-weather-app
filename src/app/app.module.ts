@@ -11,14 +11,13 @@ import { WeatherDetailsModule } from "./weatherDetails/weatherDetails.module";
 
 /* Components */
 import { AppComponent }  from './app.component';
-import { HomeComponent }  from './home/components/home.component';
 
 /* Routing */
 import { routing } from './app.routing';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, HomeModule, SharedModule, WeatherForecastModule, WeatherDetailsModule, routing ],
-  declarations: [ AppComponent, HomeComponent ],
+  declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 
